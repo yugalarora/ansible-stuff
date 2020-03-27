@@ -1,0 +1,25 @@
+---
+# vars file for sonar
+sonar_yum_dependencies:
+ - libselinux-python
+ - python-lxml
+
+postgresSQL_components:
+  - postgresql-server
+  - postgresql-contrib
+  - python-psycopg2
+
+config_files:
+  - sonar.properties
+  - wrapper.conf
+
+sonar_version: 6.7.4
+sonar_db_user: sonar
+sonar_db_name: sonar_db
+sonar_db_password: S0n14pSsw3d
+sonar_web_host: 0.0.0.0
+sonar_web_port: 9000
+sonar_group: ec2-user
+sonar_username: ec2-user
+java_path: "/bin/java"
+sonar_path: "/mnt"

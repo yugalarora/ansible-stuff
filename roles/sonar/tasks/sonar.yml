@@ -1,0 +1,24 @@
+- name: "download sonarqube"
+  unarchive:
+    src: "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-{{ sonar_version }}.zip"
+    dest: "{{ sonar_path }}"
+    owner: "{{ sonar_username }}"
+    group: "{{ sonar_group }}"
+    mode: 0755
+    remote_src: yes
+
+- name: Change ownership of sonarqube
+  file:
+    path: "{{ sonar_path }}/sonarqube-{{ sonar_version }}"
+    owner: "{{ sonar_username }}"
+    group: "{{ sonar_group }}"
+    recurse: yes
+
+- name: "Push configuration files"
+  template:
+    src: "templates/{{ item }}"
+    dest: "{{ sonar_path }}/sonarqube-{{ sonar_version }}/conf/{{ item }}"
+    owner: "{{ sonar_username }}"
+    group: "{{ sonar_group }}"
+    mode: '0775'
+  with_items: "{{ config_files }}"

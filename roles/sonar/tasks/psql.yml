@@ -1,0 +1,58 @@
+- name: "Install Dependencies from yum"
+  yum:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  ignore_errors: no
+  with_items:
+    - "{{ sonar_yum_dependencies }}"
+
+- name: Install postgresSQL on Server
+  yum:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  ignore_errors: no
+  with_items:
+    - "{{ postgresSQL_components }}"
+
+- name: Initialize postgresql database
+  shell: "service postgresql initdb"
+  become: yes
+  ignore_errors: true
+
+- name: Ensure the PostgreSQL service is running
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+  become: yes
+
+- name: test username
+  shell: "whoami"
+  sudo_user: postgres
+
+- name: Create sonar database in PostgreSQL
+  postgresql_db :
+    name: "{{ sonar_db_name }}"
+    encoding: UTF-8
+    template: template0
+  become: yes
+  become_user: postgres
+
+- name: provide sonar user access to sonar database
+  postgresql_user:
+    db: "{{ sonar_db_name }}"
+    name: "{{ sonar_db_user }}"
+    password: "{{ sonar_db_password }}"
+    priv: ALL
+    state: present
+  become: yes
+  become_user: postgres
+
+- name: fix ident/trust issue
+  replace:
+    path: /var/lib/pgsql/data/pg_hba.conf
+    regexp: '^ident'
+    replace: 'trust'
+  become: yes
