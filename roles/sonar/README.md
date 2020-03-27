@@ -17,17 +17,17 @@ Role Variables
 A description of the settable variables for this role:
 
 |   variable           |  example       |   description
-|   _________________  |  ___________   |   ___________
-|   sonar_version      |  6.4.7         |   Version of sonarqube server you wish to install       
-|   sonar_db_user      |  sonar         |   User that will be created in postgresdb for sonar to connect using
-|   sonar_db_name      |  sonar_db      |   DB that sonarqube server will connect to in postgres db
-|   sonar_db_password  |  S0n14pSsw3d   |   Password for username crated above (should be a strong password)  
-|   sonar_web_host     |  0.0.0.0       |   bind host for sonarqube server
-|   sonar_web_port     |  9000          |   bind port for sonarqube server
-|   sonar_group        |  ec2-user      |   Linux user that will own the installation directory/location on filesystem
-|   sonar_username     |  ec2-user      |   Linux group that will own the installation directory/location on filesyste
-|   java_path          |  "/bin/java"   |   JAVA binary location on VM, can be found using "which java
-|   sonar_path         |  "/mnt"        |   Directory/Mountpoint where Sonarqube will be installed on FileSystem  
+|   -----------------  |  -----------   |   -----------
+|   sonar-version      |  6.4.7         |   Version of sonarqube server you wish to install       
+|   sonar-db-user      |  sonar         |   User that will be created in postgresdb for sonar to connect using
+|   sonar-db-name      |  sonar-db      |   DB that sonarqube server will connect to in postgres db
+|   sonar-db-password  |  S0n14pSsw3d   |   Password for username crated above (should be a strong password)  
+|   sonar-web-host     |  0.0.0.0       |   bind host for sonarqube server
+|   sonar-web-port     |  9000          |   bind port for sonarqube server
+|   sonar-group        |  ec2-user      |   Linux user that will own the installation directory/location on filesystem
+|   sonar-username     |  ec2-user      |   Linux group that will own the installation directory/location on filesyste
+|   java-path          |  "/bin/java"   |   JAVA binary location on VM, can be found using "which java
+|   sonar-path         |  "/mnt"        |   Directory/Mountpoint where Sonarqube will be installed on FileSystem  
 
 Author Information
 ------------------
