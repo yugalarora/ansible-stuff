@@ -7,8 +7,11 @@ Requirements
 ------------
 
 Role has been tested on Centos7
+
 The only prerequisite for running SonarQube is to have Java (Oracle JRE 8 or OpenJDK 8) installed on your machine.
+
 This ansible role manages remaining pre-requisites and dependencies
+
 https://docs.sonarqube.org/display/SONARqube71/Requirements
 
 Role Variables
@@ -28,8 +31,3 @@ A description of the settable variables for this role:
 |   sonar-username     |  ec2-user      |   Linux group that will own the installation directory/location on filesyste
 |   java-path          |  "/bin/java"   |   JAVA binary location on VM, can be found using "which java
 |   sonar-path         |  "/mnt"        |   Directory/Mountpoint where Sonarqube will be installed on FileSystem  
-
-Author Information
-------------------
-
-Yugal Arora
